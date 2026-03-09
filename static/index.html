@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Itens do almoxarifado</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/index.html">Página inicial</a></li>
+        <li><a href="/itens.html">Itens</a></li>
+        <li style="float: right;"><a href="/admin.html">Admin</a></li>
+        <li style="float: right;"><a href="/login.html">Login</a></li>
+    </ul>
+
+    <!--Área onde serão mostrados os itens-->
+
+
+    <h1>Itens almoxarifado</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantidade</th>
+                <th>Entradas/saidas</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-corpo">
+            <tr>
+                <td>Livros</td>
+                <td>1</td>
+                <td>+20</td>
+            </tr>
+            <tr>
+                <td>Pendrives</td>
+                <td>4</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Carregadores</td>
+                <td>10</td>
+                <td>-20</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <button class="button open-add-button">Adicionar</button>
+    <button>Requisitar</button>
+
+
+    <dialog class="add-itens-modal" id="add-itens-modal">
+        <h1>Adicionar itens</h1>
+        <form id="form">
+            <label for="add-item-name">Nome do item</label><br>
+            <input type="text" id="add-item-name" name="add-item-name"><br>
+
+            <label for="add-item-quantity">Quantidade de itens</label><br>
+            <input type="number" id="add-item-quantity" name="add-item-quantity"><br><br>
+            <button type="submit" class="button conclusion-add-function">Adicionar</button>
+            <button class="button end-add-function">Cancelar</button>
+        </form>
+    </dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <dialog class="request-itens-modal" id="request-itens-modal">
+        <h1>requisitar itens</h1>
+
+        <label for="itemname">Nome do item</label><br>
+        <input required type="text" id="itemname" name="itemname"><br>
+
+        <label for="itemquantity">Quantidade de itens</label><br>
+        <input required type="number" id=""><br><br>
+        <button type="submit" class="button conclusion-add-function">Adicionar</button>
+        <button class="button end-add-function">Cancelar</button>
+    </dialog>
+
+
+
+
+
+
+    <script src="/scripts/index.js"></script>
+</body>
+
+</html>
