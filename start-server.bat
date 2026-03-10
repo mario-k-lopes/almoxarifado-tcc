@@ -1,2 +1,2 @@
-python -m flask --app server run
+python -m flask --app server run --host=0.0.0.0
 
