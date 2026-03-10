@@ -48,7 +48,7 @@
                 <td>3</td>
                 <td>Carregadores</td>
                 <td>10</td>
-                <td><button>Requisitar</button></td>
+                <td><button class="button open-request-button">Requisitar</button></td>
             </tr>
 
         </tbody>
@@ -58,12 +58,12 @@
 
     <dialog class="add-itens-modal" id="add-itens-modal">
         <h1>Adicionar itens</h1>
-        <form id="form">
+        <form id="add-form">
             <label for="add-item-name">Nome do item</label><br>
-            <input type="text" id="add-item-name" name="add-item-name"><br>
+            <input required type="text" id="add-item-name" name="add-item-name"><br>
 
             <label for="add-item-quantity">Quantidade de itens</label><br>
-            <input type="number" id="add-item-quantity" name="add-item-quantity"><br><br>
+            <input required type="number" id="add-item-quantity" name="add-item-quantity"><br><br>
             <button type="submit" class="button conclusion-add-function">Adicionar</button>
             <button class="button end-add-function">Cancelar</button>
         </form>
@@ -71,15 +71,17 @@
 
 
     <dialog class="request-itens-modal" id="request-itens-modal">
-        <h1>requisitar itens</h1>
+        <form id="request-form" action="">
+        <h1>Requisitar itens</h1>
 
-        <label for="itemname">Nome do item</label><br>
-        <input required type="text" id="itemname" name="itemname"><br>
+        <label for="request-item-name">Nome do item</label><br>
+        <input required type="text" id="request-item-name" name="request-item-name"><br>
 
-        <label for="itemquantity">Quantidade de itens</label><br>
+        <label for="request-item-quantity">Quantidade de itens</label><br>
         <input required type="number" id=""><br><br>
-        <button type="submit" class="button conclusion-add-function">Adicionar</button>
-        <button class="button end-add-function">Cancelar</button>
+        <button type="submit" class="button conclusion-request-function">Requisitar</button>
+        <button class="button end-request-function">Cancelar</button>
+        </form>
     </dialog>
 
 

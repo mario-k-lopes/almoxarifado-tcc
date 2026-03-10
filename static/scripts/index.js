@@ -5,6 +5,11 @@ const open_add_modal = document.querySelector(".open-add-button")
 const close_add_modal = document.querySelector(".end-add-function")
 const conclusion_add_function = document.querySelector(".conclusion-add-function")
 
+const request_modal = document.querySelector(".request-itens-modal")
+const open_request_modal = document.querySelector(".open-request-button")
+const close_request_modal = document.querySelector(".end-request-function")
+const conclusion_request_function = document.querySelector(".conclusion-request-function")
+
 open_add_modal.addEventListener('click', () => {
     add_modal.show()
 })
@@ -14,10 +19,23 @@ close_add_modal.addEventListener('click', () => {
 })
 
 
-const add_form = document.getElementById('form')
+open_request_modal.addEventListener('click', () => {
+    request_modal.show()
+})
+
+close_request_modal.addEventListener('click', () => {
+    request_modal.close()
+})
+
+
+const tabela = document.getElementById("tabela-corpo")
+
+const add_form = document.getElementById('add-form')
 const add_item_name = document.getElementById("add-item-name")
 const add_item_quantity = document.getElementById("add-item-quantity")
-const tabela = document.getElementById("tabela-corpo")
+const request_form = document.getElementById('request-form')
+const request_item_name = document.getElementById("request-item-name")
+const request_item_quantity = document.getElementById("request-item-quantity")
 
 add_form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -28,10 +46,10 @@ add_form.addEventListener('submit', (event) => {
     console.log(item_name)
     console.log(item_quantity)
 
-    if(item_name == "" || item_quantity == "") {
+    if (item_name == "" || item_quantity == "") {
         alert("Preencha todos os campos")
         return
-    } else if(item_quantity < 0) {
+    } else if (item_quantity < 0) {
         alert("Quantidade adicionada não pode ser menor que 0")
         return
     }
@@ -64,6 +82,53 @@ add_form.addEventListener('submit', (event) => {
 
     // Fecha aquele pop-up feoso
     add_modal.close()
+})
+
+request_form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(request_item_name)
+    const item_name = request_item_name.value.trim()
+    const item_quantity = request_item_quantity.value.trim()
+
+    console.log(item_name)
+    console.log(item_quantity)
+
+    if (item_name == "" || item_quantity == "") {
+        alert("Preencha todos os campos")
+        return
+    } else if (item_quantity < 0) {
+        alert("Quantidade adicionada não pode ser menor que 0")
+        return
+    }
+
+    // Criar nova linha na minha belíssima tabela™
+    const new_line = document.createElement("tr")
+
+    //Criar novas colunas
+    const td_id = document.createElement("td")
+    const td_name = document.createElement("td")
+    const td_quantity = document.createElement("td")
+    const td_requisitar = document.createElement("td")
+    const td_requisitar_button = document.createElement("button")
+
+
+    // "Seta" o atributo dos itens
+    td_id.textContent = tabela.rows.length + 1
+    td_name.textContent = item_name
+    td_quantity.textContent = item_quantity
+    td_requisitar_button.textContent = "Requisitar"
+    td_requisitar.appendChild(td_requisitar_button)
+
+    // Envia a maçaroca para a belíssima tabela™
+    new_line.appendChild(td_id)
+    new_line.appendChild(td_name)
+    new_line.appendChild(td_quantity)
+    new_line.appendChild(td_requisitar)
+
+    tabela.appendChild(new_line)
+
+    // Fecha aquele pop-up feoso
+    request_modal.close()
 })
 
 
