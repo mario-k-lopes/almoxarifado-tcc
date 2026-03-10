@@ -40,16 +40,25 @@ add_form.addEventListener('submit', (event) => {
     const new_line = document.createElement("tr")
 
     //Criar novas colunas
+    const td_id = document.createElement("td")
     const td_name = document.createElement("td")
     const td_quantity = document.createElement("td")
+    const td_requisitar = document.createElement("td")
+    const td_requisitar_button = document.createElement("button")
+
 
     // "Seta" o atributo dos itens
+    td_id.textContent = tabela.rows.length + 1
     td_name.textContent = item_name
     td_quantity.textContent = item_quantity
+    td_requisitar_button.textContent = "Requisitar"
+    td_requisitar.appendChild(td_requisitar_button)
 
     // Envia a maçaroca para a belíssima tabela™
+    new_line.appendChild(td_id)
     new_line.appendChild(td_name)
     new_line.appendChild(td_quantity)
+    new_line.appendChild(td_requisitar)
 
     tabela.appendChild(new_line)
 
