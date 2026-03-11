@@ -34,21 +34,21 @@
         <tbody id="tabela-corpo">
             <tr>
                 <td>1</td>
-                <td>Livros</td>
-                <td>1</td>
-                <td><button class="button open-request-button">Requisitar</button></td>
+                <td id="item_name-1">Livros</td>
+                <td id="item_quantity-1">1</td>
+                <td><button class="button open-request-button" onclick="request_item(1)">Requisitar</button></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Pendrives</td>
-                <td>4</td>
-                <td><button class="button open-request-button">Requisitar</button></td>
+                <td id="item_name-2">Pendrives</td>
+                <td id="item_quantity-2">4</td>
+                <td><button class="button open-request-button" onclick="request_item(2)">Requisitar</button></td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>Carregadores</td>
-                <td>10</td>
-                <td><button class="button open-request-button">Requisitar</button></td>
+                <td id="item_name-3">Carregadores</td>
+                <td id="item_quantity-3">10</td>
+                <td><button class="button open-request-button" onclick="request_item(3)">Requisitar</button></td>
             </tr>
 
         </tbody>
@@ -71,7 +71,7 @@
 
 
     <dialog class="request-itens-modal" id="request-itens-modal">
-        <form id="request-form" action="">
+        <form id="request-form">
         <h1>Requisitar itens</h1>
 
         <label for="request-item-name">Nome do item</label><br>

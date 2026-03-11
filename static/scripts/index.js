@@ -84,51 +84,37 @@ add_form.addEventListener('submit', (event) => {
     add_modal.close()
 })
 
-request_form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log(request_item_name)
-    const item_name = request_item_name.value.trim()
-    const item_quantity = request_item_quantity.value.trim()
+// Terminar a função de requisição de items na tabela
+// Modal não está aparecendo corretamente
+
+function request_item() {
+    request_modal.show()
+}
+
+
+function request_item(requested_item_id, requested_item_quantity) {
+
+    //request_modal.show()
+
+    console.log(`Executando request_item(${requested_item_id})`)
+    console.log(requested_item_id)
+
+    const item_name = document.getElementById(`item_name-${requested_item_id}`).textContent
+    let item_quantity = document.getElementById(`item_quantity-${requested_item_id}`).textContent
 
     console.log(item_name)
     console.log(item_quantity)
 
-    if (item_name == "" || item_quantity == "") {
-        alert("Preencha todos os campos")
+    if (item_quantity == "") {
+        alert("Quantidade precisa ser informada")
         return
-    } else if (item_quantity < 0) {
-        alert("Quantidade adicionada não pode ser menor que 0")
-        return
-    }
-
-    // Criar nova linha na minha belíssima tabela™
-    const new_line = document.createElement("tr")
-
-    //Criar novas colunas
-    const td_id = document.createElement("td")
-    const td_name = document.createElement("td")
-    const td_quantity = document.createElement("td")
-    const td_requisitar = document.createElement("td")
-    const td_requisitar_button = document.createElement("button")
-
+    } else if(requested_item_quantity < item_quantity) {
+        alert("Quantidade requisitada não pode ser menor que a quantidade disponível no estoque")
+    } 
 
     // "Seta" o atributo dos itens
-    td_id.textContent = tabela.rows.length + 1
-    td_name.textContent = item_name
-    td_quantity.textContent = item_quantity
-    td_requisitar_button.textContent = "Requisitar"
-    td_requisitar.appendChild(td_requisitar_button)
-
-    // Envia a maçaroca para a belíssima tabela™
-    new_line.appendChild(td_id)
-    new_line.appendChild(td_name)
-    new_line.appendChild(td_quantity)
-    new_line.appendChild(td_requisitar)
-
-    tabela.appendChild(new_line)
+    item_quantity = requested_item_quantity - item_quantity
 
     // Fecha aquele pop-up feoso
-    request_modal.close()
-})
-
-
+    //request_modal.close()
+}
