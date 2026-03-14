@@ -19,23 +19,11 @@ close_add_modal.addEventListener('click', () => {
 })
 
 
-open_request_modal.addEventListener('click', () => {
-    request_modal.show()
-})
-
-close_request_modal.addEventListener('click', () => {
-    request_modal.close()
-})
-
-
 const tabela = document.getElementById("tabela-corpo")
 
 const add_form = document.getElementById('add-form')
 const add_item_name = document.getElementById("add-item-name")
 const add_item_quantity = document.getElementById("add-item-quantity")
-const request_form = document.getElementById('request-form')
-const request_item_name = document.getElementById("request-item-name")
-const request_item_quantity = document.getElementById("request-item-quantity")
 
 add_form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -84,12 +72,29 @@ add_form.addEventListener('submit', (event) => {
     add_modal.close()
 })
 
+const request_form = document.getElementById('request-form')
+let requested_item_name = document.getElementById("requested-item-name")
+let requested_item_id = document.getElementById("requested-item-id")
+let requested_item_quantity = document.getElementById("requested-item-id")
+const request_item_quantity = document.getElementById("request-item-quantity")
+
 // Terminar a função de requisição de items na tabela
 // Modal não está aparecendo corretamente
 
-function request_item() {
+function request_show_modal(id) {
     request_modal.show()
+    const item_name = document.getElementById(`item_name-${id}`)
+    const item_quantity = document.getElementById(`item_quantity-${id}`)
+    requested_item_name.textContent = item_name.innerHTML
+    requested_item_quantity.textContent = item_quantity.innerHTML
+    
 }
+
+function request_close_modal(id) {
+    request_modal.close()
+}
+
+
 
 
 function request_item(requested_item_id, requested_item_quantity) {
