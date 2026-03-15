@@ -35,7 +35,7 @@
             <tr>
                 <td>1</td>
                 <td id="item_name-1">Livros</td>
-                <td id="item_quantity-1">1</td>
+                <td id="item_quantity-1">500</td>
                 <td><button class="button open-request-button" onclick="request_show_modal(1)">Requisitar</button></td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@
 
 
     <dialog class="request-itens-modal" id="request-itens-modal">
-        <form id="request-form">
+        <form onsubmit="return false;" id="request-form">
             <h1>Requisitar itens</h1>
 
             <p style="display: inline;">Requisitando: </p>
@@ -82,8 +82,8 @@
             <br>
 
             <label for="request-item-quantity">Quantidade</label><br>
-            <input required type="number" id=""><br><br>
-            <button onclick="request_item()" type="submit"
+            <input required type="number" id="request-item-quantity"><br><br>
+            <button onclick="request_item(1)" type="submit"
                 class="button conclusion-request-function">Requisitar</button>
             <button onclick="request_close_modal()" class="button end-request-function">Cancelar</button>
         </form>

@@ -97,7 +97,7 @@ function request_close_modal(id) {
 
 
 
-function request_item(requested_item_id, requested_item_quantity) {
+function request_item(requested_item_id) {
 
     //request_modal.show()
 
@@ -106,20 +106,25 @@ function request_item(requested_item_id, requested_item_quantity) {
 
     const item_name = document.getElementById(`item_name-${requested_item_id}`).textContent
     let item_quantity = document.getElementById(`item_quantity-${requested_item_id}`).textContent
+    const requested_item_quantity = document.getElementById("request-item-quantity").value
 
-    console.log(item_name)
-    console.log(item_quantity)
+    console.log(`Item requisitado: ${item_name}`)
+    console.log(`Quantidade no estoque: ${item_quantity}`)
+    console.log(`Quantidade requisitada: ${requested_item_quantity}`)
 
     if (item_quantity == "") {
         alert("Quantidade precisa ser informada")
         return
-    } else if(requested_item_quantity < item_quantity) {
+    } else if(requested_item_quantity > item_quantity) {
         alert("Quantidade requisitada não pode ser menor que a quantidade disponível no estoque")
-    } 
+        return
+    }
 
     // "Seta" o atributo dos itens
-    item_quantity = requested_item_quantity - item_quantity
+    document.getElementById(`item_quantity-${requested_item_id}`).textContent = item_quantity - +requested_item_quantity
+
+    console.log(`Nova quantidade: ${item_quantity - +requested_item_quantity}`)
 
     // Fecha aquele pop-up feoso
-    //request_modal.close()
+    request_modal.close()
 }
