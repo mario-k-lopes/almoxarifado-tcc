@@ -30,6 +30,7 @@ add_form.addEventListener('submit', (event) => {
     console.log(add_item_name)
     const item_name = add_item_name.value.trim()
     const item_quantity = add_item_quantity.value.trim()
+    const item_id = tabela.rows.length + 1
 
     console.log(item_name)
     console.log(item_quantity)
@@ -54,10 +55,16 @@ add_form.addEventListener('submit', (event) => {
 
 
     // "Seta" o atributo dos itens
-    td_id.textContent = tabela.rows.length + 1
+    td_id.textContent = item_id
     td_name.textContent = item_name
+    td_name.id = `item_name-${item_id}`
     td_quantity.textContent = item_quantity
+    td_quantity.id = `item_quantity-${item_id}`
+
     td_requisitar_button.textContent = "Requisitar"
+    td_requisitar_button.classList.add("request-btn")
+    td_requisitar_button.dataset.id = item_id
+    td_requisitar_button.dataset.name = item_name
     td_requisitar.appendChild(td_requisitar_button)
 
     // Envia a maçaroca para a belíssima tabela™
@@ -130,6 +137,9 @@ function request_item() {
         return
     } else if(requested_item_quantity > item_quantity) {
         alert("Quantidade requisitada não pode ser menor que a quantidade disponível no estoque")
+        return
+    } else if(requested_item_id < 0) {
+        alert("Quantidade de itens não pode ser menor que 0")
         return
     }
 
