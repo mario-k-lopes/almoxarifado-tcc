@@ -94,18 +94,31 @@ function request_close_modal(id) {
     request_modal.close()
 }
 
+let selected_item_name = null
+let selected_item_id = -1
+
+document.addEventListener("click", (event) => {
+    if(event.target.classList.contains("request-btn")) {
+        const id = event.target.dataset.id
+        const name = event.target.dataset.name
+
+        selected_item_id = id
+        selected_item_name = name
+
+        request_show_modal(id)
+    }
+})
 
 
-
-function request_item(requested_item_id) {
+function request_item() {
 
     //request_modal.show()
 
-    console.log(`Executando request_item(${requested_item_id})`)
-    console.log(requested_item_id)
+    console.log(`Executando request_item(${selected_item_id})`)
+    console.log(selected_item_id)
 
-    const item_name = document.getElementById(`item_name-${requested_item_id}`).textContent
-    let item_quantity = document.getElementById(`item_quantity-${requested_item_id}`).textContent
+    const item_name = selected_item_name
+    let item_quantity = document.getElementById(`item_quantity-${selected_item_id}`).textContent
     const requested_item_quantity = document.getElementById("request-item-quantity").value
 
     console.log(`Item requisitado: ${item_name}`)
@@ -121,7 +134,7 @@ function request_item(requested_item_id) {
     }
 
     // "Seta" o atributo dos itens
-    document.getElementById(`item_quantity-${requested_item_id}`).textContent = item_quantity - +requested_item_quantity
+    document.getElementById(`item_quantity-${selected_item_id}`).textContent = item_quantity - +requested_item_quantity
 
     console.log(`Nova quantidade: ${item_quantity - +requested_item_quantity}`)
 
