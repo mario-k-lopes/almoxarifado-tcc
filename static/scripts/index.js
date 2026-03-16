@@ -125,8 +125,8 @@ function request_item() {
     console.log(selected_item_id)
 
     const item_name = selected_item_name
-    let item_quantity = document.getElementById(`item_quantity-${selected_item_id}`).textContent
-    const requested_item_quantity = document.getElementById("request-item-quantity").value
+    let item_quantity = +document.getElementById(`item_quantity-${selected_item_id}`).textContent
+    const requested_item_quantity = +document.getElementById("request-item-quantity").value
 
     console.log(`Item requisitado: ${item_name}`)
     console.log(`Quantidade no estoque: ${item_quantity}`)
@@ -136,7 +136,7 @@ function request_item() {
         alert("Quantidade precisa ser informada")
         return
     } else if(requested_item_quantity > item_quantity) {
-        alert("Quantidade requisitada não pode ser menor que a quantidade disponível no estoque")
+        alert("Quantidade requisitada não pode ser maior que a quantidade disponível no estoque")
         return
     } else if(requested_item_id < 0) {
         alert("Quantidade de itens não pode ser menor que 0")
